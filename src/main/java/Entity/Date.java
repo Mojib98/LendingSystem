@@ -6,22 +6,26 @@ import com.ibm.icu.util.Calendar;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Transient;
+import java.util.GregorianCalendar;
 
 @Embeddable
 public class Date {
-    @Column
-    java.sql.Date date;
+ 
     @Transient
     PersianCalendar persianCalendar;
+    @Column
+    GregorianCalendar gregorianCalendar;
     public Date(int year, int month, int day) {
-        persianCalendar = new PersianCalendar(year,month,day);
-        date = new java.sql.Date(persianCalendar.get(Calendar.YEAR),
-                persianCalendar.get(Calendar.MONTH),
-                persianCalendar.get(Calendar.DAY_OF_MONTH));
+        persianCalendar = new PersianCalendar();
+         gregorianCalendar = new GregorianCalendar();
+         gregorianCalendar.setTime(persianCalendar.getTime());
+        System.out.println(gregorianCalendar.get(Calendar.YEAR));
+        gregorianCalendar.set((gregorianCalendar.get(Calendar.YEAR)),
+                gregorianCalendar.get(Calendar.MONTH),gregorianCalendar.get(Calendar.DATE));
     }
 
-    public java.sql.Date getDate() {
-        return this.date;
+    public java.util.Date getGregorianCalendar() {
+        return gregorianCalendar.getTime();
     }
 
     public Date() {
