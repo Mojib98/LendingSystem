@@ -8,18 +8,16 @@ import javax.persistence.Embeddable;
 import javax.persistence.Transient;
 import java.util.GregorianCalendar;
 
-@Embeddable
 public class Date {
- 
-    @Transient
+
+
     PersianCalendar persianCalendar;
-    @Column
+
     GregorianCalendar gregorianCalendar;
     public Date(int year, int month, int day) {
-        persianCalendar = new PersianCalendar();
+        persianCalendar = new PersianCalendar(year,month,day);
          gregorianCalendar = new GregorianCalendar();
          gregorianCalendar.setTime(persianCalendar.getTime());
-        System.out.println(gregorianCalendar.get(Calendar.YEAR));
         gregorianCalendar.set((gregorianCalendar.get(Calendar.YEAR)),
                 gregorianCalendar.get(Calendar.MONTH),gregorianCalendar.get(Calendar.DATE));
     }
