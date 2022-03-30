@@ -1,14 +1,8 @@
 package Entity;
 
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.Temporal;
 import java.util.concurrent.TimeUnit;
-
 @SuppressWarnings("ALL")
 @Embeddable
 @NoArgsConstructor

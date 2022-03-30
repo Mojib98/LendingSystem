@@ -10,8 +10,21 @@ import javax.persistence.Entity;
 @Getter
 @Embeddable
 public class Person {
-    private Integer debt;
+    private String Name;
+    private Borrow borrow;
+    public Person(String name) {
+        Name = name;
+    }
 
+    public Person() {
+
+    }
+    public void borrow(String disk,Date date){
+        borrow=new Borrow(disk,date);
+    }
+    public void deliver(String disk,Date date){
+        borrow=new Borrow(disk,date);
+    }
 }
 
 
