@@ -2,6 +2,7 @@ package Entity;
 
 import lombok.NoArgsConstructor;
 import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 import java.util.concurrent.TimeUnit;
 @SuppressWarnings("ALL")
 @Embeddable
@@ -24,9 +25,10 @@ public class Borrow {
         return date;
     }
     public Boolean isLate(Date date){
-        long diffInMillies = Math.abs(this.date.getGregorianCalendar().getTime() - date.getGregorianCalendar().getTime());
+  /*      long diffInMillies = Math.abs(this.date.date().getTime() - date.getGregorianCalendar().getTime());
         long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-        Boolean check=diff>=7?true:false;
-        return check;
+        Boolean check=diff>=7?true:false;*/
+//
+        return false;
     }
 }

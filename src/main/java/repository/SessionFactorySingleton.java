@@ -1,3 +1,6 @@
+package repository;
+
+import Entity.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -19,9 +22,11 @@ public class SessionFactorySingleton {
             // SessionFactory is thread safe.
             // SessionFactory is immutable.
             INSTANCE = new MetadataSources(registry)
-                    /*.addAnnotatedClass(Account.class)
-                    .addAnnotatedClass(Tweet.class)
-              */
+                    .addAnnotatedClass(Bank.class)
+                    .addAnnotatedClass(Person.class)
+                    .addAnnotatedClass(Date.class)
+                    .addAnnotatedClass(Borrow.class)
+                    .addAnnotatedClass(Disk.class)
                     .buildMetadata()
                     .buildSessionFactory();
         }

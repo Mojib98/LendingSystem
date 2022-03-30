@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 
 @Setter
@@ -19,11 +20,11 @@ public class Person {
     public Person() {
 
     }
-    public void borrow(String disk,Date date){
-        borrow=new Borrow(disk,date);
+    public void borrow(String disk,  Date date){
+        this.borrow=new Borrow(disk,date);
     }
     public void deliver(String disk,Date date){
-        borrow=new Borrow(disk,date);
+        this.borrow=new Borrow(disk,date);
     }
 }
 
