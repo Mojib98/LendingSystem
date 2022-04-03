@@ -24,7 +24,7 @@ public class SessionFactorySingleton {
             INSTANCE = new MetadataSources(registry)
                     .addAnnotatedClass(Bank.class)
                     .addAnnotatedClass(Person.class)
-                    .addAnnotatedClass(Date.class)
+                    .addAnnotatedClass(DateNotNeed.class)
                     .addAnnotatedClass(Borrow.class)
                     .addAnnotatedClass(Disk.class)
                     .buildMetadata()
