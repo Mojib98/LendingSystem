@@ -6,11 +6,8 @@ import com.ibm.icu.util.Calendar;
 import javax.persistence.Embeddable;
 import javax.persistence.Transient;
 import java.util.GregorianCalendar;
-@Embeddable
 public class DateNotNeed {
-    @Transient
     PersianCalendar persianCalendar;
-    @Transient
     GregorianCalendar gregorianCalendar;
 
     java.util.Date date;

@@ -1,17 +1,14 @@
 package Entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Embeddable;
 import java.util.Objects;
 
 @SuppressWarnings("ALL")
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@ToString
 public class Borrow {
 
     private String disk=null;
