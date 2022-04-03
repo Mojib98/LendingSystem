@@ -20,7 +20,7 @@ public class Person {
         Name = name;
     }
 
-    public Integer dayLate;
+    public Integer dayLate=0;
     private List<Borrow> list = new ArrayList<>();
 
     public void borrow(String disk, Date date) {

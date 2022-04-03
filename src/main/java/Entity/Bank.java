@@ -69,7 +69,10 @@ public class Bank {
         for (Person person:list){
             System.out.println(person.getName()+": "+person.dayLate*count2);
         }
-
+        System.out.println("Borrows Disk");
+        for (Disk d:disks){
+            System.out.println(d);
+        }
 
     }
 }
