@@ -11,14 +11,15 @@ import java.util.Objects;
 @ToString
 public class Borrow {
 
-    private String disk=null;
-    private Date date=null;
+    private String disk;
+    private Date date;
 
     public Borrow(String disk, Date date) {
         this.disk = disk;
         this.date = date;
     }
     public Boolean isLate(Date deliveryDate){
+        System.out.println(deliveryDate);
         if (deliveryDate.getDay()>this.date.getDay())
             return true;
         else if(deliveryDate.getMonth()>this.date.getMonth())

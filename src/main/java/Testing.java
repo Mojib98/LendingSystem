@@ -9,6 +9,6 @@ public class Testing {
     public static void main(String[] args) throws ParseException {
         Bank bank = new Bank();
         bank.runner();
-        bank.sss();
+        bank.show();
     }
 }

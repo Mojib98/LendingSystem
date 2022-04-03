@@ -17,7 +17,8 @@ import java.util.Scanner;
 public class Bank {
 
     private Person person;
-    List<Person> list = new LinkedList<Person>();
+    List<Person> list = new LinkedList<>();
+    List<Disk> disks = new LinkedList<>();
     int count2;
     int count;
 
@@ -28,18 +29,21 @@ public class Bank {
          count = Integer.parseInt(strin[0]);
          count2 = Integer.parseInt(strin[1]);
         for (int i =0;i<count;i++){
+            System.out.println("for in= "+i);
             String strin1[] = input.nextLine().split(" ");
             Date date = new Date(Integer.parseInt(strin1[0]),Integer.parseInt(strin1[1]),Integer.parseInt(strin1[2]));
             if (checkPerson(strin1[3])){
                 int s=find(strin1[3]);
-                if (list.get(s).getList().contains(strin1[4])){
+                if (list.get(s).getList().contains(new Borrow(strin1[4],null))){
                     list.get(s).deliver(strin1[4],date);
+                    disks.remove(new Disk(strin1[4]));
                 }
             }
             else {
                 Person p = new Person(strin1[3]);
                 p.borrow(strin1[4], date);
                 list.add(p);
+                disks.add(new Disk(strin1[4]));
 
             }
         }
@@ -47,8 +51,10 @@ public class Bank {
     }
     public Boolean checkPerson(String name){
         Person se=new Person(name);
-        if (list.contains(se))
+        if (list.contains(se)) {
+            System.out.println(list.contains(se)+"   "+se);
             return true;
+        }
         return false;
     }
     public Integer find(String name){
@@ -58,9 +64,12 @@ public class Bank {
         }
         return 0;
     }
-    public void sss(){
+    public void show(){
+        System.out.println("fine");
         for (Person person:list){
-            System.out.println(person);
+            System.out.println(person.getName()+": "+person.dayLate*count2);
         }
+
+
     }
 }

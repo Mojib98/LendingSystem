@@ -30,7 +30,6 @@ public class Person {
 
     public void deliver(String disk, Date date) {
 //        this.borrow(disk,date);
-
             for (Borrow b : list) {
                 if (b.getDisk().equals(disk)) {
                     if (b.isLate(date)) {
@@ -41,6 +40,7 @@ public class Person {
 
                 }
             }
+
 
         }
 
