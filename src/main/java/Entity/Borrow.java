@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Embeddable;
+import java.util.Objects;
 
 @SuppressWarnings("ALL")
 @AllArgsConstructor
@@ -28,5 +29,18 @@ public class Borrow {
         else if (deliveryDate.getYear()>this.date.getYear())
             return true;
         else return false;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Borrow borrow = (Borrow) o;
+        return Objects.equals(disk, borrow.disk);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(disk);
     }
 }
