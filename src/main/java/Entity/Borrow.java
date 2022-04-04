@@ -2,7 +2,6 @@ package Entity;
 
 import lombok.*;
 
-import javax.persistence.Embeddable;
 import java.util.Objects;
 
 @SuppressWarnings("ALL")

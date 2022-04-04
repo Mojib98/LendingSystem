@@ -1,4 +1,5 @@
 import Entity.Bank;
+import Entity.Date;
 import Entity.DateNotNeed;
 import Entity.Person;
 import service.BankService;
@@ -10,5 +11,7 @@ public class Testing {
         Bank bank = new Bank();
         bank.runner();
         bank.show();
+     /*  int s= Date.numDay(new Date(88,12,1),new Date(89,2,1));
+        System.out.println(s);*/
     }
 }

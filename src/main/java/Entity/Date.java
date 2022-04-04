@@ -2,8 +2,6 @@ package Entity;
 
 import lombok.*;
 
-import java.beans.Transient;
-
 @Getter
 @Setter
 @AllArgsConstructor
@@ -11,17 +9,46 @@ import java.beans.Transient;
 @ToString
 public class Date {
     private Integer year,month,day;
+    static int allDay =0;
 
 
-    public static Integer numDay(Date date2,Date date1){
-        int day=0;
-        if (date1.getYear()>date2.getYear())
-            day +=365*date1.getYear()-date2.getYear();
-        if (date1.getMonth()>date2.getMonth())
-            day +=30*date1.getMonth()-date2.getMonth();
-        if (date1.getDay()>date2.getDay())
-            day +=date1.getDay()-date2.getDay();
-        return day-7;
+    public static Integer numDay(Date borrow,Date deliver){
+        if (deliver.getMonth()<12 &borrow.getMonth()==12) {
+            int m1 = deliver.month;
+            int m2 = 12 - deliver.getMonth();
+            allDay += (29 - borrow.getMonth()) + (deliver.getMonth() * 30) + deliver.getDay() +
+                    (((deliver.getYear() - 1) - borrow.getYear()) * 360)+ Math.abs(deliver.day-borrow.getDay())-7;
+            return allDay;
+        }
+        if (deliver.getYear()>deliver.getYear() & deliver.getMonth()<borrow.getMonth()){
+            allDay= ((12-borrow.getMonth()-1)+deliver.getMonth()*30+29) +
+                    (((deliver.getDay()-borrow.getYear()-1))*360)+
+                    (Math.abs(deliver.day-borrow.getDay()))-7;
+            return allDay;
+        }
+        if (deliver.getYear()>borrow.getYear())
+            allDay +=365*(deliver.getYear()-borrow.getYear());
+        if (deliver.getMonth()>borrow.getMonth()) {
+            /*if (deliver.getMonth()==12)
+                allDay += 29 * deliver.getMonth() - borrow.getMonth();
+*/
+            allDay += 30 * (deliver.getMonth() - borrow.getMonth());
+        }
+
+            allDay +=Math.abs(deliver.day-borrow.getDay())-7;
+        return allDay;
 
     }
+  /*  private static  Integer numMonth(Date borrow,Date deliver){
+        if (deliver.getMonth()<12 &borrow.getMonth()==12){
+            int m1=deliver.month;
+            int m2=12 - deliver.getMonth();
+            this.allDay +=(29-borrow.getMonth())+(deliver.getMonth()*30)+deliver.getDay()+
+                    (((deliver.getYear()-1)- borrow.getYear())*360);
+            return allDay;
+        }
+
+
+    }*/
+
 }
