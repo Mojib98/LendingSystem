@@ -20,7 +20,7 @@ public class Person {
         Name = name;
     }
 
-    public Integer dayLate=0;
+    public Integer dayLate = 0;
     private List<Borrow> list = new ArrayList<>();
 
     public void borrow(String disk, Date date) {
@@ -30,28 +30,27 @@ public class Person {
 
     public void deliver(String disk, Date date) {
 //        this.borrow(disk,date);
-            for (Borrow b : list) {
-                if (b.getDisk().equals(disk)) {
-                    if (b.isLate(date)) {
-                    Integer day=Date.numDay(b.getDate(),date);
+        for (Borrow b : list) {
+            if (b.getDisk().equals(disk)) {
+                if (b.isLate(date)) {
+                    Integer day = Date.numDay(b.getDate(), date);
                     lateDay(day);
                     list.remove(b);
                     break;
-                    }
-
                 }
+
             }
+        }
 
 
-        }
-        public void lateDay(int day){
-        if (day>7){
-            this.dayLate = day-7;
-            System.out.println(dayLate);
-        }
-        else
-            this.dayLate=0;
-        }
+    }
+
+    public void lateDay(int day) {
+        if (day > 7) {
+            this.dayLate = day - 7;
+        } else
+            this.dayLate = 0;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -66,7 +65,7 @@ public class Person {
         return Objects.hash(Name);
     }
     //        list.remove(borrow);
-    }
+}
 
 
 
