@@ -14,16 +14,15 @@ public class Date {
 
     public static Integer numDay(Date borrow,Date deliver){
         if (deliver.getMonth()<12 &borrow.getMonth()==12) {
-            int m1 = deliver.month;
-            int m2 = 12 - deliver.getMonth();
-            allDay += (29 - borrow.getMonth()) + (deliver.getMonth() * 30) + deliver.getDay() +
-                    (((deliver.getYear() - 1) - borrow.getYear()) * 360)+ Math.abs(deliver.day-borrow.getDay())-7;
+            int m1 = deliver.getMonth()-29;
+            allDay +=  (deliver.getMonth() * 30) + deliver.getDay() +m1+
+                    (((deliver.getYear() - 1) - borrow.getYear()) * 360);
             return allDay;
         }
         if (deliver.getYear()>deliver.getYear() & deliver.getMonth()<borrow.getMonth()){
             allDay= ((12-borrow.getMonth()-1)+deliver.getMonth()*30+29) +
                     (((deliver.getDay()-borrow.getYear()-1))*360)+
-                    (Math.abs(deliver.day-borrow.getDay()))-7;
+                    (Math.abs(deliver.day-borrow.getDay()));
             return allDay;
         }
         if (deliver.getYear()>borrow.getYear())
@@ -35,7 +34,7 @@ public class Date {
             allDay += 30 * (deliver.getMonth() - borrow.getMonth());
         }
 
-            allDay +=Math.abs(deliver.day-borrow.getDay())-7;
+            allDay +=deliver.getDay()-borrow.getDay();
         return allDay;
 
     }

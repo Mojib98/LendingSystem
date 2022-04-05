@@ -33,7 +33,8 @@ public class Person {
             for (Borrow b : list) {
                 if (b.getDisk().equals(disk)) {
                     if (b.isLate(date)) {
-                    this.dayLate=Date.numDay(b.getDate(),date);
+                    Integer day=Date.numDay(b.getDate(),date);
+                    lateDay(day);
                     list.remove(b);
                     break;
                     }
@@ -42,6 +43,14 @@ public class Person {
             }
 
 
+        }
+        public void lateDay(int day){
+        if (day>7){
+            this.dayLate = day-7;
+            System.out.println(dayLate);
+        }
+        else
+            this.dayLate=0;
         }
 
     @Override
